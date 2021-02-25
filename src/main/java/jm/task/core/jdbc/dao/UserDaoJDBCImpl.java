@@ -6,7 +6,7 @@ import jm.task.core.jdbc.util.Util;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class UserDaoJDBCImpl implements UserDao {
 
@@ -25,7 +25,7 @@ public class UserDaoJDBCImpl implements UserDao {
             "age TINYINT(3) NOT NULL, " +
             "PRIMARY KEY (id));";
 
-    private Util utilConnection = new Util();
+    private final Util utilConnection = new Util();
 
 
 
@@ -38,7 +38,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void createUsersTable() {
 
         try(Connection connection = utilConnection.getUtilConnection();
-            Statement statement= connection.createStatement();)
+            Statement statement= connection.createStatement())
         {
             statement.executeUpdate(CREATE);
 
